@@ -1,13 +1,13 @@
 import Contact from 'components/Contact/Contact';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/contacts/operations';
+import List from '@mui/material/List';
 import {
   selectFilterContacts,
   selectIsLoading,
   selectError,
 } from 'redux/selectors';
-import { fetchContacts } from 'redux/contacts/operations';
-import List from '@mui/material/List';
 
 const ContactList = () => {
   const dispatch = useDispatch();

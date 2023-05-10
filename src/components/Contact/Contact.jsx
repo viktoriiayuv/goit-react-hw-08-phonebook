@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import { ContactContainer } from './Contact.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import ListItem from '@mui/material/ListItem';
@@ -13,14 +12,12 @@ const Contact = ({ id, name, number }) => {
   const handleDelete = () => dispatch(deleteContact(id));
 
   return (
-    // <ContactContainer>
     <ListItem sx={{ p: 0 }}>
       <ListItemText primary={name} secondary={number} />
       <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
         <DeleteIcon />
       </IconButton>
     </ListItem>
-    // {/* </ContactContainer> */}
   );
 };
 

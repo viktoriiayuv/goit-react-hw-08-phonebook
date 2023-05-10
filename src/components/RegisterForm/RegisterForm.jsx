@@ -39,19 +39,6 @@ export const RegisterForm = () => {
 
   return (
     <FormContainer onSubmit={handleSubmit} autoComplete="off">
-      {/* <label className="label">
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label className="label">
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className="label">
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button> */}
       <FormControl sx={{ mb: 2, width: 1 }}>
         <TextField
           id="outlined-basic"

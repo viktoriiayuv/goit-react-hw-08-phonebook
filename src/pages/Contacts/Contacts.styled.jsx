@@ -9,12 +9,6 @@ export const ContactsContainer = styled.div`
   border: 2px solid #1976d2;
   border-radius: 8px;
 
-  h2 {
-    color: #1976d2;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-
   .filter {
     width: 300px;
   }
