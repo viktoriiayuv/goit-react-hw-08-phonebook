@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const ContactContainer = styled.li`
-  padding: 4px;
-  font-size: 18px;
+export const ContactContainer = styled.div`
+  /* padding: 4px;
+  font-size: 18px; */
 
-  & button {
+  /* & button {
     margin-left: 12px;
     cursor: pointer;
     padding: 4px;
@@ -20,5 +20,5 @@ export const ContactContainer = styled.li`
     &:active {
       background-color: #5b86c7;
     }
-  }
+  } */
 `;

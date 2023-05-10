@@ -5,6 +5,8 @@ import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/selectors';
 import { ContactFormContainer } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
+import { TextField, FormControl, Button } from '@mui/material';
+import { toast } from 'react-hot-toast';
 
 const INITIAL_STATE = {
   name: '',
@@ -45,7 +47,7 @@ const ContactForm = () => {
     );
 
     if (isInContacts) {
-      alert(`${newContact.name} is already in contacts`);
+      toast.error(`${newContact.name} is already in contacts`);
       return;
     }
     dispatch(addContact(newContact));
@@ -59,7 +61,7 @@ const ContactForm = () => {
 
   return (
     <ContactFormContainer onSubmit={handleSubmit}>
-      <label>
+      {/* <label>
         Name
         <input
           onChange={handleChange}
@@ -83,7 +85,40 @@ const ContactForm = () => {
           required
         />
       </label>
-      <button type="submit">Add contact</button>
+      <button type="submit">Add contact</button> */}
+      <FormControl sx={{ mb: 2, width: 1 }}>
+        <TextField
+          onChange={handleChange}
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          name="name"
+          value={name}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+      </FormControl>
+      <FormControl sx={{ mb: 2, width: 1 }}>
+        <TextField
+          onChange={handleChange}
+          id="outlined-basic"
+          label="Number"
+          variant="outlined"
+          type="tel"
+          name="number"
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+      </FormControl>
+      <FormControl sx={{ width: 1 }}>
+        <Button variant="contained" type="submit">
+          Add contact
+        </Button>
+      </FormControl>
     </ContactFormContainer>
   );
 };

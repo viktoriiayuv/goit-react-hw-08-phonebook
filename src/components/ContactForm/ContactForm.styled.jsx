@@ -2,15 +2,13 @@ import styled from 'styled-components';
 
 export const ContactFormContainer = styled.form`
   margin: 0;
-  padding: 8px;
   font-size: 18px;
-  border: 1px solid #000000;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 350px;
+  width: 300px;
 
-  & label {
+  /* & label {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -42,5 +40,5 @@ export const ContactFormContainer = styled.form`
     &:active {
       background-color: #5b86c7;
     }
-  }
+  } */
 `;

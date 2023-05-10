@@ -7,6 +7,7 @@ import {
   selectError,
 } from 'redux/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
+import List from '@mui/material/List';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,11 @@ const ContactList = () => {
 
   return (
     <>
-      <ul>
+      <List>
         {filterContacts.map(({ id, name, number }) => (
           <Contact key={id} id={id} name={name} number={number} />
         ))}
-      </ul>
+      </List>
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
     </>

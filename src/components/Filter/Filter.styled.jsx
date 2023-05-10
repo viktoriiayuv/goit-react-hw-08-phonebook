@@ -4,7 +4,7 @@ export const FilterContainer = styled.div`
   margin: 0;
   font-size: 18px;
 
-  & input {
+  /* & input {
     padding: 4px;
     width: 150px;
     outline: none;
@@ -13,5 +13,5 @@ export const FilterContainer = styled.div`
     &:focus {
       border-color: #6c9fec;
     }
-  }
+  } */
 `;

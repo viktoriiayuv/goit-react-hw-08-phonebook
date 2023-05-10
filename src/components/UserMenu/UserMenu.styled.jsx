@@ -6,6 +6,8 @@ export const UserMenuContainer = styled.form`
   gap: 12px;
 
   .username {
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 500;
+    color: #acdaee;
   }
 `;
