@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
@@ -8,30 +10,45 @@ const initialState = {
   isRefreshing: false,
 };
 
+const persistConfig = {
+  key: 'token',
+  storage,
+  whitelist: ['token'],
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [register.pending]() {},
+    [register.fulfilled](state, { payload }) {
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.token = payload.token;
       state.isLoggedIn = true;
     },
-    [logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [register.rejected]() {},
+    [logIn.pending]() {},
+    [logIn.fulfilled](state, { payload }) {
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.token = payload.token;
       state.isLoggedIn = true;
     },
-    [logOut.fulfilled](state) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
+    [logIn.rejected]() {},
+
+    [logOut.pending]() {},
+    [logOut.fulfilled]() {
+      return initialState;
     },
+    [logOut.rejected]() {},
+
     [refreshUser.pending](state) {
       state.isRefreshing = true;
     },
-    [refreshUser.fulfilled](state, action) {
-      state.user = action.payload;
+    [refreshUser.fulfilled](state, { payload }) {
+      state.user.name = payload.name;
+      state.user.email = payload.email;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     },
@@ -41,4 +58,7 @@ const authSlice = createSlice({
   },
 });
 
-export const authReducer = authSlice.reducer;
+export const authPersistedReducer = persistReducer(
+  persistConfig,
+  authSlice.reducer
+);
